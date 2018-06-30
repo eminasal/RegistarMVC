@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Registar.Models.Zapis>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th> Datum prekršaja  </th>
+        <th> Počinioc </th>
+        <th> </th>
+        <th> Nadležni policajac </th>
+        <th> </th>
+        <th> Opis prekršaja </th>
+        <th>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.Datum) </td>
+            <td> @Html.DisplayFor(modelItem => item.OsobaID.Ime) </td>
+            <td> @Html.DisplayFor(modelItem => item.OsobaID.Prezime) </td>
+            <td> @Html.DisplayFor(modelItem => item.PolicajacID.PolicajacIme) </td>
+            <td> @Html.DisplayFor(modelItem => item.PolicajacID.PolicajacPrezime) </td>
+            <td> @Html.DisplayFor(modelItem => item.PrekrsajID.OpisPrekrsaja) </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ZapisID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ZapisID })
+                @*   @Html.ActionLink("Details", "Details", new { id = item.ZapisID }) *@
+            </td>
+        </tr>
+    }
+
+</table>

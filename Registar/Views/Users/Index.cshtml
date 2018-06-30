@@ -1,0 +1,120 @@
+﻿<style>
+
+    .btn-default {
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+
+    .container {
+        padding-right: 15px;
+        /* padding-left: 15px; */
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 0px;
+    }
+</style>
+@model Registar.Models.IndexViewModel
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+
+
+@if (ViewBag.displayMenu == "Yes")
+{
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Registar</title>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li style="font-size:18px; text-align:left">@Html.ActionLink("Registar", "Index", "Home") </li>
+
+                    <li>@Html.ActionLink("Pocetna", "Index", "Home")</li>
+                    <li>@Html.ActionLink("O nama", "About", "Home")</li>
+                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Osoblje", "Index", "Policajacs")</li>
+                    <li>@Html.ActionLink("Zapisnik", "Index", "Zapis")</li>
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <br />
+    <h1>&emsp;Administracija sistema </h1>
+    <br />
+    <h4>
+        &emsp;
+        Pregled osoblja institucije: &emsp;&emsp;&emsp;&ensp;
+        <a class="btn btn-default" href="/Policajacs"> Osoblje </a>
+    </h4>
+
+    <br />
+    <h4>
+        &emsp;
+        Pregled počinjenih prekršaja: &emsp;&emsp;
+        <a class="btn btn-default" href="/Zapis">Zapisnik </a>
+    </h4>
+    <br />
+    <h4>
+        &emsp;
+        Kreiranje nove vrste korisnika: &emsp;&ensp;
+        <a class="btn btn-default" href="/Role">Kreiraj</a>
+    </h4>
+
+
+
+
+}
+else
+{
+    <h2>&emsp;  Dobrodošao <strong>@ViewBag.Name</strong>  </h2>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Registar</title>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li style="font-size:18px; text-align:left">@Html.ActionLink("Registar", "Index", "Home") </li>
+
+                    <li>@Html.ActionLink("Pocetna", "Index", "Home")</li>
+                    <li>@Html.ActionLink("O nama", "About", "Home")</li>
+                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Osoblje", "Index", "Policajacs")</li>
+                    <li>@Html.ActionLink("Zapisnik", "Index", "Zapis")</li>
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    
+    <h1>&emsp; </h1>
+    
+    <h4>
+        &emsp;
+        Pregled osoblja institucije: &emsp;&emsp;&emsp;&ensp;
+        <a class="btn btn-default" href="/Policajacs"> Osoblje </a>
+    </h4>
+
+    <br />
+    <h4>
+        &emsp;
+        Pregled počinjenih prekršaja: &emsp;&emsp;
+        <a class="btn btn-default" href="/Zapis">Zapisnik </a>
+    </h4>
+    <br />
+
+}

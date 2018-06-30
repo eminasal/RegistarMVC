@@ -1,0 +1,33 @@
+﻿@model Registar.Models.Zapis
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Zapis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ZapisID)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.ZapisID)
+        </div>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ZapisID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

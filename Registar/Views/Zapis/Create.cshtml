@@ -1,0 +1,122 @@
+﻿@model Registar.Models.Zapis
+
+@{
+    /**/
+
+    ViewBag.Title = " ";
+}
+
+<h2>Kreiranje novog zapisa o prekršaju</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+    <fieldset>
+        <legend> </legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Datum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Datum)
+            @Html.ValidationMessageFor(model => model.Datum)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OsobaID, "Osoba")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OsobaID", String.Empty)
+            @Html.ValidationMessageFor(model => model.OsobaID)
+        </div>
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PolicajacID, "Policajac")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PolicajacID", String.Empty)
+            @Html.ValidationMessageFor(model => model.PolicajacID)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PrekrsajID, "Prekrsaj")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PrekrsajID", String.Empty)
+            @Html.ValidationMessageFor(model => model.PrekrsajID)
+        </div>
+
+        <p>
+            <input type="submit" value="Spasi bilješke" />
+        </p>
+
+
+    </fieldset>
+
+
+
+
+}
+
+
+
+<div>
+    @Html.ActionLink("Nazad", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@*
+
+
+    <div class="form-horizontal">
+        <h4>Zapis</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Datum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Datum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Datum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+      @{
+        var datumi = "";
+        var osobaid = 0;
+        var policajacid = 0;
+        var prekrsajid = 0;
+
+        if (IsPost)
+        {
+            datumi = Request.Form["Datum"];
+            osobaid = Convert.ToInt32(Request.Form["OsobaID"]);
+            policajacid = Convert.ToInt32(Request.Form["PolicajacID"]);
+            prekrsajid = Convert.ToInt32(Request.Form["PrekrsajID"]);
+        }
+
+
+    }
+*@

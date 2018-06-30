@@ -1,0 +1,164 @@
+﻿<style>
+
+    .btn-default {
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+</style>
+
+
+@model Registar.Models.IndexViewModel
+@{
+    ViewBag.Title = "Dobrodošli na Vaš korisnički profil";
+}
+
+
+@using Microsoft.AspNet.Identity
+@if (ViewBag.displayMenu == "Yes")
+{
+
+    <h2><br /> @ViewBag.Title</h2>
+    <h1>  </h1>
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <div style="float: left;"> <h4> Postavke korisničkog računa </h4></div>
+        <div style="float: right;">
+            <a align="right" class="btn btn-default" href="/User/Index">Administratorski pristup</a>
+        </div>
+    </div>
+    <br />
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal" style="font-size:15px">
+
+            <dt>Username:</dt>
+            <dd>
+                <p>
+                    @Html.ActionLink(
+        User.Identity.GetUserName() + "", "", routeValues: null, htmlAttributes: new { title = "" })
+                </p>
+            </dd>
+
+            <dt>Password:</dt>
+            <dd>
+
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+
+            </dd>
+            <br />
+
+            <dt>External Logins:</dt>
+            <dd>
+                @Model.Logins.Count
+                @Html.ActionLink("Manage", "ManageLogins")
+            </dd>
+            <br />
+
+
+            <dt>Phone Number:</dt>
+            <dd>
+                @(Model.PhoneNumber ?? "None")
+                @if (Model.PhoneNumber != null)
+                {
+                    <br />
+                    <text>&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;</text>
+                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+                    }
+                }
+                else
+                {
+                    <text>&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
+                }
+            </dd>
+        </dl>
+    </div>
+
+
+
+}
+else
+{
+    <h2><br /> @ViewBag.Title</h2>
+    <h1> <br /> </h1>
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <div style="float: left;"> <h4> Postavke korisničkog računa </h4></div>
+        <div style="float: right;">
+            <a align="right" class="btn btn-default" href="/Users">Preglednik</a>
+        </div>
+    </div>
+    <br />
+    <div>
+
+
+        <hr />
+        <dl class="dl-horizontal" style="font-size:15px">
+
+            <dt>Username:</dt>
+            <dd>
+                <p>
+                    @Html.ActionLink(
+        User.Identity.GetUserName() + "", "", routeValues: null, htmlAttributes: new { title = "" })
+                </p>
+            </dd>
+
+            <dt>Password:</dt>
+            <dd>
+
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+
+            </dd>
+            <br />
+
+            <dt>External Logins:</dt>
+            <dd>
+                @Model.Logins.Count
+                @Html.ActionLink("Manage", "ManageLogins")
+            </dd>
+            <br />
+
+
+            <dt>Phone Number:</dt>
+            <dd>
+                @(Model.PhoneNumber ?? "None")
+                @if (Model.PhoneNumber != null)
+                {
+                    <br />
+                    <text>&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;</text>
+                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+                    }
+                }
+                else
+                {
+                    <text>&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
+                }
+            </dd>
+
+
+
+        </dl>
+    </div>
+
+}
